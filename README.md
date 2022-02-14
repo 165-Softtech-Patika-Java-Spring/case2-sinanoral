@@ -3,13 +3,14 @@
 ## Adres Kayıt Sistemi:  
 Bir adreste bulunması gereken alanlar:  
 - Ülke 
--  Şehir 
--  İlçe 
--  Mahalle 
--  Sokak 
--  Kapı No  
--  Daire No 
-Bir adet controller yazınız(Tek controller yeterli). Bu controller içerisinde aşağıdaki işlemler yapılabilmelidir.  
+- Şehir 
+- İlçe 
+- Mahalle 
+- Sokak 
+- Kapı No  
+- Daire No
+
+ Bir adet controller yazınız(Tek controller yeterli). Bu controller içerisinde aşağıdaki işlemler yapılabilmelidir.  
 1. Ülke kaydedilebilmelidir. 
 2. Ülke kodundan ülke sorgulanabilmelidir. 
 3. Şehir kaydedilebilmelidir. 
