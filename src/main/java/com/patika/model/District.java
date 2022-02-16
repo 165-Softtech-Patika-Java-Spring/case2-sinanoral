@@ -1,9 +1,10 @@
-package com.patika.entities;
+package com.patika.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -12,24 +13,27 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table
 @Entity
-public class City {
+public class District {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String code;
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @OneToMany(mappedBy = "district")
+    @ToString.Exclude
+    private List<Neighborhood> neighborhoods;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        City city = (City) o;
-        return id != null && Objects.equals(id, city.id);
+        District district = (District) o;
+        return id != null && Objects.equals(id, district.id);
     }
 
     @Override

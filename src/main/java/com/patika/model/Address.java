@@ -1,4 +1,4 @@
-package com.patika.entities;
+package com.patika.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -14,15 +14,16 @@ import java.util.Objects;
 @Entity
 public class Address {
 
+    //TODO(Sinan: Add base model)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "city_id")
     private City city;
 

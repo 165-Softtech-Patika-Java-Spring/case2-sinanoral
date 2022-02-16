@@ -1,34 +1,38 @@
-package com.patika.entities;
+package com.patika.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table
 @Entity
-public class District {
-
+@Table
+public class Neighborhood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @JoinColumn(name = "district_id")
+    private District district;
+
+    @OneToMany(mappedBy = "neighborhood")
+    @ToString.Exclude
+    private List<Street> streets;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        District district = (District) o;
-        return id != null && Objects.equals(id, district.id);
+        Neighborhood that = (Neighborhood) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override

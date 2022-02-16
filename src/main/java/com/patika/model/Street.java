@@ -1,4 +1,4 @@
-package com.patika.entities;
+package com.patika.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
