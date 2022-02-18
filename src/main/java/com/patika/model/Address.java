@@ -27,15 +27,15 @@ public class Address {
     @JoinColumn(name = "city_id")
     private City city;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "district_id")
     private District district;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "neighborhood_id")
     private Neighborhood neighborhood;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "street_id")
     private Street street;
 

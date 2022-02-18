@@ -1,5 +1,6 @@
 package com.patika.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -20,13 +21,10 @@ public class District {
     private Long id;
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-
-    @OneToMany(mappedBy = "district")
-    @ToString.Exclude
-    private List<Neighborhood> neighborhoods;
 
     @Override
     public boolean equals(Object o) {

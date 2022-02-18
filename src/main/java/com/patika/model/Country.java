@@ -21,10 +21,6 @@ public class Country {
     private String name;
     private String code;
 
-    @OneToMany(mappedBy = "country")
-    @ToString.Exclude
-    private List<City> cities;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
