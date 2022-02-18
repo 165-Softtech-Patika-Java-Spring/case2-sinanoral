@@ -2,8 +2,13 @@ package com.patika.dao;
 
 import com.patika.model.Street;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StreetDao extends JpaRepository<Street, Long> {
+    @Modifying
+    @Query("update City c set c.name = ?1 where c.id = ?2")
+    void setStreetNameById(String name, Long id);
 }

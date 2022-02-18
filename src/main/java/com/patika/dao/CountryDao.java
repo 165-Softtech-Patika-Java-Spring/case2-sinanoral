@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryDao extends JpaRepository<Country, Long> {
+    Country getByCode(String code);
 }
