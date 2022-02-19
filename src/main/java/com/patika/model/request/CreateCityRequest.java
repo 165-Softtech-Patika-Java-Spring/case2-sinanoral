@@ -6,4 +6,5 @@ import lombok.Data;
 public class CreateCityRequest {
     private String name;
     private String plateNo;
+    private Long countryId;
 }

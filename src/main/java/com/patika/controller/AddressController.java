@@ -4,13 +4,14 @@ import com.patika.model.request.*;
 import com.patika.model.response.*;
 import com.patika.service.*;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1")
 public class AddressController {
 
@@ -20,16 +21,6 @@ public class AddressController {
     private final DistrictService districtService;
     private final StreetService streetService;
     private final NeighborhoodService neighborhoodService;
-
-    @Autowired
-    public AddressController(AddressService addressService, CountryService countryService, CityService cityService, DistrictService districtService, StreetService streetService, NeighborhoodService neighborhoodService) {
-        this.addressService = addressService;
-        this.countryService = countryService;
-        this.cityService = cityService;
-        this.districtService = districtService;
-        this.streetService = streetService;
-        this.neighborhoodService = neighborhoodService;
-    }
 
     @Operation(summary = "gets all the addresses", tags = {"addresses"})
     @GetMapping("/addresses")

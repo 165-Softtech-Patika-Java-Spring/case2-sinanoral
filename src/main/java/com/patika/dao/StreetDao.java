@@ -6,9 +6,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface StreetDao extends JpaRepository<Street, Long> {
     @Modifying
     @Query("update City c set c.name = ?1 where c.id = ?2")
     void setStreetNameById(String name, Long id);
+
+    List<Street> getStreetsByNeighborhood_Id(Long id);
 }
