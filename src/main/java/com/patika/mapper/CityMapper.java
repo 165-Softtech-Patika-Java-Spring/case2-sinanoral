@@ -1,20 +1,33 @@
 package com.patika.mapper;
 
 import com.patika.model.City;
-import com.patika.model.District;
 import com.patika.model.request.CreateCityRequest;
 import com.patika.model.response.GetCityResponse;
-import com.patika.model.response.GetDistrictResponse;
+import com.patika.service.CountryService;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface CityMapper {
-    GetCityResponse countryToGetCountryResponse(City city);
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public abstract class CityMapper {
 
-    City createCityRequestToCity(CreateCityRequest createCityRequest);
+    @Autowired
+    private CountryService countryService;
 
-    List<GetDistrictResponse> districtToGetDistrictResponse(List<District> districts);
+    public City createCityRequestToCity(CreateCityRequest createCityRequest) {
+
+        if (createCityRequest == null) {
+            return null;
+        }
+
+        City city = new City();
+        city.setName(createCityRequest.getName());
+        city.setPlateNo(createCityRequest.getPlateNo());
+        city.setCountry(countryService.getById(createCityRequest.getCountryId()));
+
+        return city;
+    }
+
+    public abstract GetCityResponse countryToGetCountryResponse(City city);
 }

@@ -9,23 +9,25 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-@Configuration
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class AddressMapper {
 
     @Autowired
     private CountryService countryService;
+
     @Autowired
     private CityService cityService;
+
     @Autowired
     private NeighborhoodService neighborhoodService;
+
     @Autowired
     private StreetService streetService;
+
     @Autowired
     private DistrictService districtService;
 

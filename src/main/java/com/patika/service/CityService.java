@@ -3,28 +3,20 @@ package com.patika.service;
 import com.patika.dao.CityDao;
 import com.patika.mapper.CityMapper;
 import com.patika.model.City;
-import com.patika.model.District;
 import com.patika.model.request.CreateCityRequest;
 import com.patika.model.response.GetCityResponse;
-import com.patika.model.response.GetDistrictResponse;
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CityService {
 
     private final CityDao cityDao;
-    private final CityMapper mapper = Mappers.getMapper(CityMapper.class);
-
-    @Autowired
-    public CityService(CityDao cityDao) {
-        this.cityDao = cityDao;
-    }
+    private final CityMapper mapper;
 
     public ResponseEntity<Void> create(CreateCityRequest createCityRequest) {
         City city = mapper.createCityRequestToCity(createCityRequest);
@@ -36,12 +28,6 @@ public class CityService {
         City city = cityDao.getByPlateNo(plateNo);
         GetCityResponse getCityResponse = mapper.countryToGetCountryResponse(city);
         return ResponseEntity.ok(getCityResponse);
-    }
-
-    public ResponseEntity<List<GetDistrictResponse>> getDistrictsById(Long id) {
-        List<District> districts = cityDao.getDistrictsById(id);
-        List<GetDistrictResponse> districtResponses = mapper.districtToGetDistrictResponse(districts);
-        return ResponseEntity.ok(districtResponses);
     }
 
     public City getById(Long id) {

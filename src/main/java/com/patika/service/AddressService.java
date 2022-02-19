@@ -5,8 +5,7 @@ import com.patika.mapper.AddressMapper;
 import com.patika.model.Address;
 import com.patika.model.request.CreateAddressRequest;
 import com.patika.model.response.GetAddressResponse;
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +13,11 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AddressService {
 
     private final AddressDao addressDao;
-    private final AddressMapper mapper = Mappers.getMapper(AddressMapper.class);
-
-    @Autowired
-    public AddressService(AddressDao addressDao) {
-        this.addressDao = addressDao;
-
-    }
+    private final AddressMapper mapper;
 
     public ResponseEntity<Void> create(CreateAddressRequest createAddressRequest) {
         Address address = mapper.createAddressRequestToAddress(createAddressRequest);
