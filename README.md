@@ -1,23 +1,26 @@
 # Case2
 
-## Adres Kayıt Sistemi:  
-Bir adreste bulunması gereken alanlar:  
-- Ülke 
-- Şehir 
-- İlçe 
-- Mahalle 
-- Sokak 
-- Kapı No  
+## Adres Kayıt Sistemi:
+
+Bir adreste bulunması gereken alanlar:
+
+- Ülke
+- Şehir
+- İlçe
+- Mahalle
+- Sokak
+- Kapı No
 - Daire No
 
- Bir adet controller yazınız(Tek controller yeterli). 
- 
-Bu controller içerisinde aşağıdaki işlemler yapılabilmelidir.  
+Bir adet controller yazınız(Tek controller yeterli).
+
+Bu controller içerisinde aşağıdaki işlemler yapılabilmelidir.
+
 1. Ülke kaydedilebilmelidir. [OK]
 2. Ülke kodundan ülke sorgulanabilmelidir. [OK]
 3. Şehir kaydedilebilmelidir. [OK]
 4. Plakadan şehir bilgisi sorgulanabilmelidir. [OK]
-5. İlçe  kaydedilebilmelidir. [OK]
+5. İlçe kaydedilebilmelidir. [OK]
 6. Bir ilçeye ait mahalleler sorgulanabilmelidir.[OK]
 7. Bir ile ait ilçeler sorgulanabilmelidir.[OK]
 8. Mahalle kaydedilebilmelidir.[OK]
@@ -28,7 +31,9 @@ Bu controller içerisinde aşağıdaki işlemler yapılabilmelidir.
 13. Adres kaydedilebilmelidir.
 14. Adres silinebilmelidir. [OK]
 15. Id den adres bilgisi edinilebilmelidir. [OK]
- 
-### NOT:  
-- Address entitysi hariç diğer entitylerin servislerinde entity kullanabilirsiniz. Yani metot parametresi için dto, return için başka bir dto kullanmanıza gerek yok.  
+
+### NOT:
+
+- Address entitysi hariç diğer entitylerin servislerinde entity kullanabilirsiniz. Yani metot parametresi için dto,
+  return için başka bir dto kullanmanıza gerek yok.
 - Address kaydeden dönen vs yerlerde mapper ya da converterlar kullanarak DTO ile veri akışını sağlayınız.

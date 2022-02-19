@@ -1,13 +1,10 @@
 package com.patika.service;
 
 import com.patika.dao.DistrictDao;
-import com.patika.mapper.CityMapper;
 import com.patika.mapper.DistrictMapper;
 import com.patika.model.District;
 import com.patika.model.Neighborhood;
-import com.patika.model.request.CreateCityRequest;
 import com.patika.model.request.CreateDistrictRequest;
-import com.patika.model.request.UpdateDistrictRequest;
 import com.patika.model.response.GetNeighborhoodResponse;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;

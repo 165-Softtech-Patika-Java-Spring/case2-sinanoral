@@ -16,7 +16,7 @@ import java.util.List;
 
 @Configuration
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public abstract class AddressMapper{
+public abstract class AddressMapper {
 
     @Autowired
     private CountryService countryService;
@@ -30,14 +30,15 @@ public abstract class AddressMapper{
     private DistrictService districtService;
 
     public abstract GetAddressResponse addressToGetAddressResponse(Address address);
+
     public abstract List<GetAddressResponse> addressListToGetAddressResponseList(List<Address> addresses);
 
     @Mappings({
-            @Mapping( target = "country", source = "countryId"),
-            @Mapping( target = "city", source = "cityId"),
-            @Mapping( target = "district", source = "districtId"),
-            @Mapping( target = "neighborhood", source = "neighborhoodId"),
-            @Mapping( target = "street", source = "streetId"),
+            @Mapping(target = "country", source = "countryId"),
+            @Mapping(target = "city", source = "cityId"),
+            @Mapping(target = "district", source = "districtId"),
+            @Mapping(target = "neighborhood", source = "neighborhoodId"),
+            @Mapping(target = "street", source = "streetId"),
     })
     public abstract Address createAddressRequestToAddress(CreateAddressRequest createAddressRequest);
 

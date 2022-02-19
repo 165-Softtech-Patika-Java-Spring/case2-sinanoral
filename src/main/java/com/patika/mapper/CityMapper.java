@@ -13,6 +13,8 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CityMapper {
     GetCityResponse countryToGetCountryResponse(City city);
+
     City createCityRequestToCity(CreateCityRequest createCityRequest);
+
     List<GetDistrictResponse> districtToGetDistrictResponse(List<District> districts);
 }

@@ -12,5 +12,6 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface DistrictMapper {
     District createDistrictRequestToDistrict(CreateDistrictRequest createDistrictRequest);
+
     List<GetNeighborhoodResponse> neighborhoodToGetNeighborhoodResponse(List<Neighborhood> neighborhoods);
 }

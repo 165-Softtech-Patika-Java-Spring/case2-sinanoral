@@ -2,12 +2,8 @@ package com.patika.service;
 
 import com.patika.dao.StreetDao;
 import com.patika.mapper.StreetMapper;
-import com.patika.model.District;
-import com.patika.model.Neighborhood;
 import com.patika.model.Street;
-import com.patika.model.request.CreateNeighborhoodRequest;
 import com.patika.model.request.CreateStreetRequest;
-import com.patika.model.request.UpdateDistrictRequest;
 import com.patika.model.request.UpdateStreetRequest;
 import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;

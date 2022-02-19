@@ -1,10 +1,8 @@
 package com.patika.service;
 
 import com.patika.dao.CountryDao;
-import com.patika.mapper.AddressMapper;
 import com.patika.mapper.CountryMapper;
 import com.patika.model.Country;
-import com.patika.model.District;
 import com.patika.model.request.CreateCountryRequest;
 import com.patika.model.response.GetCountryResponse;
 import org.mapstruct.factory.Mappers;

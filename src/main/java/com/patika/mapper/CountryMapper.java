@@ -9,5 +9,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CountryMapper {
     GetCountryResponse countryToGetCountryResponse(Country country);
+
     Country createCountryRequestToCountry(CreateCountryRequest createCountryRequest);
 }
