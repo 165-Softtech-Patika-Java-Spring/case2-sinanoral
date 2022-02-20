@@ -23,6 +23,7 @@ public class CountryService {
 
     public Result create(CreateCountryRequest createCountryRequest) {
         Country country = mapper.createCountryRequestToCountry(createCountryRequest);
+        country.setName(country.getName().toLowerCase());
         countryDao.save(country);
         return new SuccessResult("Country created");
     }
