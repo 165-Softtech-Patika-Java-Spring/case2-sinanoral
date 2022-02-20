@@ -54,9 +54,9 @@ public class AddressController {
     }
 
     @Operation(summary = "gets a country by code", tags = {"countries"})
-    @GetMapping("/countries/{code}")
-    public DataResult<GetCountryResponse> getCountryByCode(@PathVariable String code) {
-        return countryService.getByCode(code);
+    @GetMapping("/countries")
+    public DataResult<GetCountryResponse> getCountryByCode(@RequestParam String code) {
+        return countryService.getByCode(code.toLowerCase());
     }
 
     @Operation(summary = "creates a city", tags = {"cities"})
@@ -66,8 +66,8 @@ public class AddressController {
     }
 
     @Operation(summary = "gets a city by plate number", tags = {"cities"})
-    @GetMapping("/cities/{plateNo}")
-    public DataResult<GetCityResponse> getCityByPlateNo(@PathVariable String plateNo) {
+    @GetMapping("/cities")
+    public DataResult<GetCityResponse> getCityByPlateNo(@RequestParam String plateNo) {
         return cityService.getByPlateNo(plateNo);
     }
 
@@ -96,9 +96,9 @@ public class AddressController {
     }
 
     @Operation(summary = "updates name of a neighborhood by id", tags = {"neighborhoods"})
-    @PutMapping("/neighborhoods")
-    public Result updateNeighborhoodNameById(@RequestBody UpdateNeighborhoodRequest updateNeighborhoodRequest) {
-        return neighborhoodService.updateNameById(updateNeighborhoodRequest);
+    @PutMapping("/neighborhoods/{id}")
+    public Result updateNeighborhoodNameById(@PathVariable Long id, @RequestBody UpdateNeighborhoodRequest updateNeighborhoodRequest) {
+        return neighborhoodService.updateNameById(id, updateNeighborhoodRequest);
     }
 
     @Operation(summary = "gets streets of a neighborhood by neighborhood id", tags = {"neighborhoods"})
@@ -114,8 +114,8 @@ public class AddressController {
     }
 
     @Operation(summary = "updates name of a street by id", tags = {"streets"})
-    @PutMapping("/street")
-    public Result updateCityNameById(@RequestBody UpdateStreetRequest updateStreetRequest) {
-        return streetService.updateNameById(updateStreetRequest);
+    @PutMapping("/streets/{id}")
+    public Result updateCityNameById(@PathVariable Long id, @RequestBody UpdateStreetRequest updateStreetRequest) {
+        return streetService.updateNameById(id, updateStreetRequest);
     }
 }

@@ -31,8 +31,8 @@ public class StreetService {
     }
 
     @Transactional
-    public Result updateNameById(UpdateStreetRequest updateStreetRequest) {
-        boolean isUpdated = streetDao.setStreetNameById(updateStreetRequest.getName(), updateStreetRequest.getId());
+    public Result updateNameById(Long id, UpdateStreetRequest updateStreetRequest) {
+        boolean isUpdated = streetDao.setStreetNameById(updateStreetRequest.getName(), id);
         if(!isUpdated)
             throw new NoSuchElementFoundException(ErrorMessage.ITEM_NOT_FOUND);
         return new SuccessResult("Street's name updated");

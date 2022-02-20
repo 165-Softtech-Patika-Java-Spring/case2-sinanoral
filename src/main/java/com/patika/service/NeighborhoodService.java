@@ -32,8 +32,8 @@ public class NeighborhoodService {
     }
 
     @Transactional
-    public Result updateNameById(UpdateNeighborhoodRequest updateNeighborhoodRequest) {
-        boolean isUpdated = neighborhoodDao.setNeighborhoodNameById(updateNeighborhoodRequest.getName(), updateNeighborhoodRequest.getId());
+    public Result updateNameById(Long id, UpdateNeighborhoodRequest updateNeighborhoodRequest) {
+        boolean isUpdated = neighborhoodDao.setNeighborhoodNameById(updateNeighborhoodRequest.getName(), id);
         if(!isUpdated)
             throw new NoSuchElementFoundException(ErrorMessage.ITEM_NOT_FOUND);
         return new SuccessResult("Neighborhood's name updated");
