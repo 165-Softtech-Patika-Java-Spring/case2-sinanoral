@@ -1,6 +1,6 @@
 package com.patika.mapper;
 
-import com.patika.model.Neighborhood;
+import com.patika.model.entity.Neighborhood;
 import com.patika.model.request.CreateNeighborhoodRequest;
 import com.patika.model.response.GetNeighborhoodResponse;
 import com.patika.service.DistrictService;

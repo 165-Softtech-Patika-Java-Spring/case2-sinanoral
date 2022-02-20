@@ -1,6 +1,6 @@
 package com.patika.dao;
 
-import com.patika.model.City;
+import com.patika.model.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

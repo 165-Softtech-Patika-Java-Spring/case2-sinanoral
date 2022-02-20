@@ -1,4 +1,4 @@
-package com.patika.model;
+package com.patika.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -12,27 +12,25 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Table
 @Entity
-public class City {
-
+@Table
+public class Neighborhood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String plateNo;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @JoinColumn(name = "district_id")
+    private District district;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        City city = (City) o;
-        return id != null && Objects.equals(id, city.id);
+        Neighborhood that = (Neighborhood) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.patika.mapper;
 
-import com.patika.model.City;
+import com.patika.model.entity.City;
 import com.patika.model.request.CreateCityRequest;
 import com.patika.model.response.GetCityResponse;
 import com.patika.service.CountryService;

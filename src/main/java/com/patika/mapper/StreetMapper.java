@@ -1,6 +1,6 @@
 package com.patika.mapper;
 
-import com.patika.model.Street;
+import com.patika.model.entity.Street;
 import com.patika.model.request.CreateStreetRequest;
 import com.patika.model.response.GetStreetResponse;
 import com.patika.service.NeighborhoodService;

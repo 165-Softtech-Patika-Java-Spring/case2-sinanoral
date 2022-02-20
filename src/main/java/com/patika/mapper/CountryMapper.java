@@ -1,6 +1,6 @@
 package com.patika.mapper;
 
-import com.patika.model.Country;
+import com.patika.model.entity.Country;
 import com.patika.model.request.CreateCountryRequest;
 import com.patika.model.response.GetCountryResponse;
 import org.mapstruct.Mapper;

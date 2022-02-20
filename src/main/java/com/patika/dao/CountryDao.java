@@ -1,6 +1,6 @@
 package com.patika.dao;
 
-import com.patika.model.Country;
+import com.patika.model.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

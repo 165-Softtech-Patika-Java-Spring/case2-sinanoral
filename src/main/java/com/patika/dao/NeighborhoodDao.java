@@ -1,6 +1,6 @@
 package com.patika.dao;
 
-import com.patika.model.Neighborhood;
+import com.patika.model.entity.Neighborhood;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface NeighborhoodDao extends JpaRepository<Neighborhood, Long> {
     @Modifying
     @Query("update Neighborhood n set n.name = ?1 where n.id = ?2")
-    void setNeighborhoodNameById(String name, Long id);
+    boolean setNeighborhoodNameById(String name, Long id);
 
     List<Neighborhood> getNeighborhoodsByDistrict_Id(Long id);
 }

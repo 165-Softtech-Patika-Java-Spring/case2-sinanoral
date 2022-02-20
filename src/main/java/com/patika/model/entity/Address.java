@@ -1,6 +1,5 @@
-package com.patika.model;
+package com.patika.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -12,25 +11,44 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table
-public class Street {
+@Entity
+public class Address {
+
+    //TODO(Sinan: Add base model)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
-    @JsonIgnore
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
+    @OneToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @OneToOne
+    @JoinColumn(name = "district_id")
+    private District district;
+
+    @OneToOne
     @JoinColumn(name = "neighborhood_id")
     private Neighborhood neighborhood;
+
+    @OneToOne
+    @JoinColumn(name = "street_id")
+    private Street street;
+
+    private String buildingNo;
+    private String apartmentNo;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Street street = (Street) o;
-        return id != null && Objects.equals(id, street.id);
+        Address address = (Address) o;
+        return id != null && Objects.equals(id, address.id);
     }
 
     @Override

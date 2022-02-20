@@ -1,6 +1,6 @@
 package com.patika.mapper;
 
-import com.patika.model.*;
+import com.patika.model.entity.*;
 import com.patika.model.request.CreateAddressRequest;
 import com.patika.model.response.GetAddressResponse;
 import com.patika.service.*;
