@@ -1,15 +1,19 @@
 package com.patika.service;
 
 import com.patika.dao.AddressDao;
+import com.patika.enums.errors.ErrorMessage;
+import com.patika.exception.NoSuchElementFoundException;
 import com.patika.mapper.AddressMapper;
-import com.patika.model.Address;
+import com.patika.model.entity.Address;
 import com.patika.model.request.CreateAddressRequest;
 import com.patika.model.response.GetAddressResponse;
+import com.patika.utilities.results.DataResult;
+import com.patika.utilities.results.Result;
+import com.patika.utilities.results.SuccessDataResult;
+import com.patika.utilities.results.SuccessResult;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -19,26 +23,31 @@ public class AddressService {
     private final AddressDao addressDao;
     private final AddressMapper mapper;
 
-    public ResponseEntity<Void> create(CreateAddressRequest createAddressRequest) {
+    public Result create(CreateAddressRequest createAddressRequest) {
         Address address = mapper.createAddressRequestToAddress(createAddressRequest);
         addressDao.save(address);
-        return ResponseEntity.ok().build();
+        return new SuccessResult("Address created");
     }
 
-    public ResponseEntity<List<GetAddressResponse>> getAll() {
+    public DataResult<List<GetAddressResponse>> getAll() {
         List<Address> addresses = addressDao.findAll();
         List<GetAddressResponse> getAddressResponseList = mapper.addressListToGetAddressResponseList(addresses);
-        return ResponseEntity.ok(getAddressResponseList);
+        return new SuccessDataResult<>(getAddressResponseList);
     }
 
-    public ResponseEntity<GetAddressResponse> getById(Long id) {
-        Address address = addressDao.findById(id).orElseThrow(() -> new EntityNotFoundException(id.toString()));
+    public DataResult<GetAddressResponse> getById(Long id) {
+        Address address = addressDao.findById(id).orElseThrow(() ->
+                new NoSuchElementFoundException(ErrorMessage.ITEM_NOT_FOUND));
+
         GetAddressResponse getAddressResponse = mapper.addressToGetAddressResponse(address);
-        return ResponseEntity.ok(getAddressResponse);
+        return new SuccessDataResult<>(getAddressResponse);
     }
 
-    public ResponseEntity<Long> deleteById(Long id) {
-        addressDao.deleteById(id);
-        return ResponseEntity.ok(id);
+    public Result deleteById(Long id) {
+        Address address = addressDao.findById(id).orElseThrow(() ->
+                new NoSuchElementFoundException(ErrorMessage.ITEM_NOT_FOUND));
+
+        addressDao.delete(address);
+        return new SuccessResult("Address deleted");
     }
 }

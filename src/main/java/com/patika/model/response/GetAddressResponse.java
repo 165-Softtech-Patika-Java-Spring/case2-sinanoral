@@ -1,6 +1,6 @@
 package com.patika.model.response;
 
-import com.patika.model.*;
+import com.patika.model.entity.*;
 import lombok.Data;
 
 @Data
